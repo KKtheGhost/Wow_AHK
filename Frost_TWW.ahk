@@ -82,6 +82,12 @@ MainLoop()
     if (color = 0x0036B8) {
         Send "{F9}"
     }
+
+    ; 镜像
+    color := PixelGetColor(1899, 1485)
+    if (color = 0x50A4C8) {
+        Send "{3}"
+    }
 }
 
 ; 脚本结束时自动关闭提示

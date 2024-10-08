@@ -10,7 +10,7 @@ XButton2::  ; 鼠标第5键（前进键）
 {
     global isRunning := !isRunning
     if (isRunning) {
-        SetTimer MainLoop, 30
+        SetTimer MainLoop, 25
         ToolTip "脚本已启动"
 	SetTimer () => ToolTip(), -3000
     } else {
@@ -72,9 +72,33 @@ MainLoop()
     }
 
     ; 奥术洪流
-    color := PixelGetColor(1920, 14920)
-    if (color = 0xFFFBFF) {
-        Send "{f}"
+    color := PixelGetColor(1912, 1498)
+    if (color = 0xFFFCF9) {
+        Send "+{F4}"
+    }
+
+    ; 饰品1
+    color := PixelGetColor(1910, 1487)
+    if (color = 0x692F92) {
+        Send "{F10}"
+    }
+
+    ; 饰品2
+    color := PixelGetColor(1909, 1496)
+    if (color = 0x7657C0) {
+        Send "{F10}"
+    }
+
+    ; 饰品3
+    color := PixelGetColor(1893, 1474)
+    if (color = 0x91A94D) {
+        Send "{F9}"
+    }
+
+    ; 火盾
+    color := PixelGetColor(1913, 1481)
+    if (color = 0xBA8324) {
+        Send "{2}"
     }
 }
 

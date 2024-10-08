@@ -29,28 +29,34 @@ MainLoop()
         Send "{E}"
     }
 
-    ; 暗言术痛
-    color := PixelGetColor(1892, 1459)
-    if (color = 0xFFFE20) {
-        Send "{Q}"
-    }
-
-    ; 神圣之星
-    color := PixelGetColor(1908, 1490)
-    if (color = 0xC8A3F9) {
-        Send "{R}"
-    }
-
     ; 真言术韧
     color := PixelGetColor(1919, 1506)
     if (color = 0x7CACE3) {
-        Send "{F12}"
+        Send "+{F1}"
+    }
+
+    ; 暗影魔
+    color := PixelGetColor(1890, 1458)
+    if (color = 0xC7ACCA) {
+        Send "+{F2}"
     }
 
     ; 奥术洪流
     color := PixelGetColor(1890, 1505)
     if (color = 0x18457B) {
-        Send "{F11}"
+        Send "+{F3}"
+    }
+
+    ; 暗影形态
+    color := PixelGetColor(1890, 1492)
+    if (color = 0x25056B) {
+        Send "+{F4}"
+    }
+
+    ; 净化邪恶
+    color := PixelGetColor(1902, 1499)
+    if (color = 0xC92002) {
+        Send "{F1}"
     }
 
     ; 吸血鬼之触
@@ -114,27 +120,33 @@ MainLoop()
     }
 
     ; 暗言术灭
-    color := PixelGetColor(1909, 1469)
-    if (color = 0xF3DD3E) {
+    color := PixelGetColor(1910, 1481)
+    if (color = 0x160000) {
         Send "{F9}"
     }
 
-    ; 暗影形态
-    color := PixelGetColor(1890, 1492)
-    if (color = 0x25056B) {
+    ; 暗言术痛
+    color := PixelGetColor(1892, 1459)
+    if (color = 0xFFFE20) {
         Send "{F10}"
     }
 
     ; 暗影冲击
     color := PixelGetColor(1910, 1463)
     if (color = 0x21168C) {
-        Send "{F Down}"
+        Send "{F11 Down}"
 	    Sleep 50	
-	    Send "{F Up}"
+	    Send "{F11 Up}"
 	    Sleep 120
 	    Send "{LButton Down}"
 	    Sleep 50
 	    Send "{LButton Up}"
+    }
+
+    ; 神圣之星
+    color := PixelGetColor(1908, 1490)
+    if (color = 0xC8A3F9) {
+        Send "{F12}"
     }
 }
 

@@ -106,6 +106,12 @@ MainLoop()
     if (color = 0xA1FA10) {
         Send "{F10}"
     }
+
+    ; 饰品
+    color := PixelGetColor(1891, 1478)
+    if (color = 0x26363F) {
+        Send "{F10}"
+    }
 }
 
 ; 脚本结束时自动关闭提示
