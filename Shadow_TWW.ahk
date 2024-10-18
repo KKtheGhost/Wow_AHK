@@ -10,13 +10,25 @@ XButton2::  ; 鼠标第5键（前进键）
 {
     global isRunning := !isRunning
     if (isRunning) {
-        SetTimer MainLoop, 30
-        ToolTip "脚本已启动"
-	SetTimer () => ToolTip(), -3000
+        SetTimer RandomMainLoop, 25  ; 先设置一个初始间隔
+        ToolTip "✅ Started"
     } else {
-        SetTimer MainLoop, 0
-        ToolTip "脚本已停止"
-	SetTimer () => ToolTip(), -3000
+        SetTimer RandomMainLoop, 0
+        ToolTip "❌ Stopped"
+    }
+    SetTimer () => ToolTip(), -3000
+}
+
+RandomMainLoop()
+{
+    if (!isRunning) {
+        return  ; 如果isRunning为false，立即退出函数
+    }
+    
+    interval := Random(40, 100)  ; 生成 40-100 之间的随机数
+    MainLoop()  ; 执行主循环
+    if (isRunning) {  ; 只有在isRunning为true时才设置下一次循环
+        SetTimer RandomMainLoop, -interval
     }
 }
 
@@ -33,12 +45,6 @@ MainLoop()
     color := PixelGetColor(1919, 1506)
     if (color = 0x7CACE3) {
         Send "+{F1}"
-    }
-
-    ; 暗影魔
-    color := PixelGetColor(1890, 1458)
-    if (color = 0xC7ACCA) {
-        Send "+{F2}"
     }
 
     ; 奥术洪流
@@ -71,9 +77,33 @@ MainLoop()
         Send "{F2}"
     }
 
+    ; 催心魔
+    color := PixelGetColor(1897, 1482)
+    if (color = 0x99F151) {
+        Send "{F2}"
+    }
+
+    ; 暗影魔
+    color := PixelGetColor(1890, 1458)
+    if (color = 0xC7ACCA) {
+        Send "{F2}"
+    }
+
     ; 黑暗升华
     color := PixelGetColor(1919, 1482)
     if (color = 0x582972) {
+        Send "{F3}"
+    }
+
+    ; 虚空爆发
+    color := PixelGetColor(1890, 1480)
+    if (color = 0x6D26DE) {
+        Send "{F3}"
+    }
+
+    ; 虚空箭
+    color := PixelGetColor(1899, 1488)
+    if (color = 0xF504FF) {
         Send "{F3}"
     }
 
@@ -147,6 +177,18 @@ MainLoop()
     color := PixelGetColor(1908, 1490)
     if (color = 0xC8A3F9) {
         Send "{F12}"
+    }
+
+    ; 光晕
+    color := PixelGetColor(1899, 1472)
+    if (color = 0xBB68B7) {
+        Send "{F12}"
+    }
+
+    ; 饰品-嬗变之卵
+    color := PixelGetColor(1920, 1476)
+    if (color = 0x9B33E9) {
+        Send "!1"
     }
 }
 

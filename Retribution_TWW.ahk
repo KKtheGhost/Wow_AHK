@@ -10,13 +10,25 @@ XButton2::  ; 鼠标第5键（前进键）
 {
     global isRunning := !isRunning
     if (isRunning) {
-        SetTimer MainLoop, 25
-        ToolTip "脚本已启动"
-	SetTimer () => ToolTip(), -3000
+        SetTimer RandomMainLoop, 25  ; 先设置一个初始间隔
+        ToolTip "✅ Started"
     } else {
-        SetTimer MainLoop, 0
-        ToolTip "脚本已停止"
-	SetTimer () => ToolTip(), -3000
+        SetTimer RandomMainLoop, 0
+        ToolTip "❌ Stopped"
+    }
+    SetTimer () => ToolTip(), -3000
+}
+
+RandomMainLoop()
+{
+    if (!isRunning) {
+        return  ; 如果isRunning为false，立即退出函数
+    }
+    
+    interval := Random(40, 100)  ; 生成 40-100 之间的随机数
+    MainLoop()  ; 执行主循环
+    if (isRunning) {  ; 只有在isRunning为true时才设置下一次循环
+        SetTimer RandomMainLoop, -interval
     }
 }
 
@@ -26,6 +38,12 @@ MainLoop()
     ; 灰烬觉醒
     color := PixelGetColor(1923, 1492)
     if (color = 0x6B1810) {
+        Send "{F5}"
+    }
+
+    ; 圣光之锤
+    color := PixelGetColor(1907, 1485)
+    if (color = 0x7D7C7F) {
         Send "{F5}"
     }
 

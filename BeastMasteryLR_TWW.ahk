@@ -2,9 +2,6 @@
 #Warn  ; Enable warnings to assist with detecting common errors.
 SetWorkingDir A_ScriptDir  ; Ensures a consistent starting directory.
 
-; Talent:
-; C0PAAAAAAAAAAAAAAAAAAAAAAYsNDMgFwMsFyYBAAAAAADAAAAAAgZsNjhZMMzMmhxMjZGjZmZyMMmZMzMmZYYMmxwsMDzyMYD
-
 ; 全局变量
 isRunning := false
 
@@ -13,15 +10,28 @@ XButton2::  ; 鼠标第5键（前进键）
 {
     global isRunning := !isRunning
     if (isRunning) {
-        SetTimer MainLoop, 30
-        ToolTip "脚本已启动"
-	SetTimer () => ToolTip(), -3000
+        SetTimer RandomMainLoop, 25  ; 先设置一个初始间隔
+        ToolTip "✅ Started"
     } else {
-        SetTimer MainLoop, 0
-        ToolTip "脚本已停止"
-	SetTimer () => ToolTip(), -3000
+        SetTimer RandomMainLoop, 0
+        ToolTip "❌ Stopped"
+    }
+    SetTimer () => ToolTip(), -3000
+}
+
+RandomMainLoop()
+{
+    if (!isRunning) {
+        return  ; 如果isRunning为false，立即退出函数
+    }
+    
+    interval := Random(40, 100)  ; 生成 40-100 之间的随机数
+    MainLoop()  ; 执行主循环
+    if (isRunning) {  ; 只有在isRunning为true时才设置下一次循环
+        SetTimer RandomMainLoop, -interval
     }
 }
+
 
 ; 主循环
 MainLoop()
