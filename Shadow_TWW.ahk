@@ -35,6 +35,12 @@ RandomMainLoop()
 ; 主循环
 MainLoop()
 {
+    ; 绝望祷言
+    color := PixelGetColor(1921, 1493)
+    if (color = 0xF9D5AF) {
+        Send "{1}"
+    }
+
     ; 沉默
     color := PixelGetColor(1903, 1461)
     if (color = 0x390C42) {
@@ -108,8 +114,20 @@ MainLoop()
     }
 
     ; 能量灌注
-    color := PixelGetColor(1917, 1499)
-    if (color = 0x69482B) {
+    color := PixelGetColor(1896, 1485)
+    if (color = 0x4A3923) {
+        Send "{F12}"
+    }
+
+    ; 神圣之星
+    color := PixelGetColor(1908, 1490)
+    if (color = 0xC8A3F9) {
+        Send "{F4}"
+    }
+
+    ; 光晕
+    color := PixelGetColor(1899, 1472)
+    if (color = 0xBB68B7) {
         Send "{F4}"
     }
 
@@ -164,25 +182,14 @@ MainLoop()
     ; 暗影冲击
     color := PixelGetColor(1910, 1463)
     if (color = 0x21168C) {
-        Send "{F11 Down}"
-	    Sleep 50	
-	    Send "{F11 Up}"
-	    Sleep 120
-	    Send "{LButton Down}"
-	    Sleep 50
-	    Send "{LButton Up}"
-    }
-
-    ; 神圣之星
-    color := PixelGetColor(1908, 1490)
-    if (color = 0xC8A3F9) {
-        Send "{F12}"
-    }
-
-    ; 光晕
-    color := PixelGetColor(1899, 1472)
-    if (color = 0xBB68B7) {
-        Send "{F12}"
+        Send "{F11}"
+;       Send "{F11 Down}"
+;	    Sleep 50	
+;	    Send "{F11 Up}"
+;	    Sleep 120
+;	    Send "{LButton Down}"
+;	    Sleep 50
+;	    Send "{LButton Up}"
     }
 
     ; 饰品-嬗变之卵
